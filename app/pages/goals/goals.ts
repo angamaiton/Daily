@@ -30,8 +30,13 @@ export class GoalsPage {
           date: snap.val().date,
           description: snap.val().description
         });
-      })
+      });
+      this.goalList = rawList;
     });
+  }
+
+  goToAddGoal() {
+    this.navCtrl.push(AddGoalPage);
   }
 
 

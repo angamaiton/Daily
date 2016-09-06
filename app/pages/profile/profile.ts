@@ -3,30 +3,22 @@ import { NavController, AlertController } from 'ionic-angular';
 import { SettingsPage } from '../settings/settings';
 import { LoginPage } from '../../pages/login/login';
 import { ProfileData } from '../../providers/profile-data/profile-data';
-import { AuthData } from '../../providers/auth-data/auth-data';
 
 @Component({
   templateUrl: 'build/pages/profile/profile.html',
-  providers: [ProfileData, AuthData]
+  providers: [ProfileData]
 })
 export class ProfilePage {
 
   public userProfile: any;
   public birthDate: string;
 
-  constructor(private navCtrl: NavController, public profileData: ProfileData,
-    public authData: AuthData, public alertCtrl: AlertController) {
+  constructor(private navCtrl: NavController, public profileData: ProfileData, public alertCtrl: AlertController) {
 
       this.profileData.getUserProfile().on('value', (data) => {
             this.userProfile = data.val();
             this.birthDate = this.userProfile.birthDate;
           });
-  }
-
-  logOut(){
-    this.authData.logoutUser().then(() => {
-      this.navCtrl.setRoot(LoginPage);
-    });
   }
   goToSettings() {
     this.navCtrl.push(SettingsPage)

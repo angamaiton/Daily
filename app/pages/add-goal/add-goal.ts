@@ -20,7 +20,7 @@ export class AddGoalPage {
   }
 
   createGoal(goalName: string, goalDate: string, goalDescription: string) {
-    this.goalData.createGoal(goalName, goalDate, goalDescription).then(() => {
+    this.goalData.createGoal(goalName, goalDescription, goalDate).then(() => {
         this.navCtrl.pop();
     });
   }
