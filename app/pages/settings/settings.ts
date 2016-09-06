@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {NavController, Toggle} from 'ionic-angular';
-import {EditContactInfoPage} from "../edit-contact-info/edit-contact-info";
+import { NavController, AlertController } from 'ionic-angular';
+import { EditContactInfoPage } from "../edit-contact-info/edit-contact-info";
 import { AuthData } from '../../providers/auth-data/auth-data';
 import { ProfileData } from '../../providers/profile-data/profile-data';
 import { LoginPage } from '../login/login';
@@ -13,14 +13,23 @@ import { LoginPage } from '../login/login';
 */
 @Component({
   templateUrl: 'build/pages/settings/settings.html',
-  providers: [AuthData]
+  providers: [AuthData, ProfileData]
 })
 export class SettingsPage {
 
-  private notifications: boolean;
+  public userProfile: any;
+  private pushNotifications: boolean;
+  private dailyEmail: boolean;
 
-  constructor(private navCtrl: NavController, private authData: AuthData) {
+  constructor(private navCtrl: NavController, private authData: AuthData, private profileData: ProfileData) {
 
+    this.profileData.getUserProfile().on('value', (data) => {
+          this.userProfile = data.val();
+          this.pushNotifications = this.userProfile.pushNotificationsEnabled;
+          this.dailyEmail = this.userProfile.dailyEmailEnabled;
+        });
+
+    this.profileData = profileData;
   }
 
   logOut(){
@@ -33,7 +42,13 @@ export class SettingsPage {
     this.navCtrl.push(EditContactInfoPage);
   }
 
-  togglePushNotifications(togglePushNotifications: boolean) {
+  togglePushNotifications(pushNotifications: boolean) {
+    this.profileData.updatePushNotifications(pushNotifications).then(() => {
 
+    });
+  }
+
+  toggleDailyEmail(dailyEmail: boolean) {
+    this.profileData.updateDailyEmail(dailyEmail);
   }
 }

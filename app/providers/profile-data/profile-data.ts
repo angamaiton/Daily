@@ -11,10 +11,14 @@ import * as firebase from 'firebase';
 export class ProfileData {
 
   public userProfile: any;
+  public pushNotificationsEnabled: any;
+  public dailyEmailEnabled: any;
   public currentUser: any;
 
   constructor() {
     this.currentUser = firebase.auth().currentUser;
+    this.pushNotificationsEnabled = firebase.database().ref('userProfile/' + this.currentUser.uid + '/pushNotificationsEnabled');
+    this.dailyEmailEnabled = firebase.database().ref('userProfile/' + this.currentUser.uid + '/dailyEmailEnabled');
     this.userProfile = firebase.database().ref('/userProfile');
   }
 
@@ -45,12 +49,16 @@ export class ProfileData {
     });
   }
 
-  togglePushNotifications(pushNotifications: boolean): any {
-    this.currentUser.togglePushNotifications().then(() => {
-      this.userProfile.child(this.currentUser.uid).update({
-        pushNotifications: pushNotifications
-      });
+  updateDailyEmail(dailyEmailStatus) {
+    return this.userProfile.child(this.currentUser.uid).update({
+      dailyEmailEnabled: dailyEmailStatus
     })
+  }
+
+  updatePushNotifications(pushNotificationsStatus: boolean): any {
+    return this.userProfile.child(this.currentUser.uid).update({
+      pushNotificationsEnabled: pushNotificationsStatus
+    });
   }
 
 
