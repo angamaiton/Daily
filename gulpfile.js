@@ -33,6 +33,7 @@ var copyHTML = require('ionic-gulp-html-copy');
 var copyFonts = require('ionic-gulp-fonts-copy');
 var copyScripts = require('ionic-gulp-scripts-copy');
 var tslint = require('ionic-gulp-tslint');
+var firebase = require("firebase");
 
 var isRelease = argv.indexOf('--release') > -1;
 
@@ -46,6 +47,14 @@ gulp.task('watch', ['clean'], function(done){
     }
   );
 });
+
+var config = {
+    apiKey: "AIzaSyC-xk4DT4hVSUQWCJstMRTlZ1iwNtIBokY",
+    authDomain: "daily-by-praxis-142323.firebaseapp.com",
+    databaseURL: "https://daily-by-praxis-142323.firebaseio.com",
+    storageBucket: "daily-by-praxis-142323.appspot.com",
+  };
+firebase.initializeApp(config);
 
 gulp.task('build', ['clean'], function(done){
   runSequence(

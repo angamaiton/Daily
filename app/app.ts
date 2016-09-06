@@ -1,4 +1,4 @@
-import {Component, provide} from '@angular/core';
+import {Component, provide, Injectable} from '@angular/core';
 import {Platform, ionicBootstrap} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {TabsPage} from './pages/tabs/tabs';
@@ -6,15 +6,25 @@ import {GoalsPage} from './pages/goals/goals';
 import {Http} from '@angular/http';
 import {AuthHttp, AuthConfig} from 'angular2-jwt';
 import {AuthService} from './services/auth/auth';
+import * as firebase from 'firebase';
 
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>'
 })
 export class MyApp {
 
-  private rootPage: any;
+  private rootPage: any = TabsPage;
 
   constructor(private platform: Platform, private auth: AuthService) {
+
+    const
+      fbConf = {
+        apiKey: "AIzaSyC-xk4DT4hVSUQWCJstMRTlZ1iwNtIBokY",
+        authDomain: "daily-by-praxis-142323.firebaseapp.com",
+        databaseURL: "https://daily-by-praxis-142323.firebaseio.com",
+        storageBucket: "daily-by-praxis-142323.appspot.com"
+      };
+
     if (!auth.authenticated()) {
       this.logIn();
     } else if (auth.authenticated()) {
@@ -31,7 +41,6 @@ export class MyApp {
 
   public logIn() {
     this.auth.login();
-    this.rootPage = TabsPage;
   }
 }
 
