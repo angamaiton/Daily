@@ -19,7 +19,7 @@
     </ion-list-header>
     <ion-item>
       <ion-label>Daily Email</ion-label>
-      <ion-toggle></ion-toggle>
+      <ion-toggle [(ngModel)]="dailyEmail" (click)="toggleDailyEmail(dailyEmail)" [checked]="userProfile?.dailyEmailEnabled"></ion-toggle>
     </ion-item>
   </ion-list>
 

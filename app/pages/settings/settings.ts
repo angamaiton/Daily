@@ -19,12 +19,14 @@ export class SettingsPage {
 
   public userProfile: any;
   private pushNotifications: boolean;
+  private dailyEmail: boolean;
 
   constructor(private navCtrl: NavController, private authData: AuthData, private profileData: ProfileData) {
 
     this.profileData.getUserProfile().on('value', (data) => {
           this.userProfile = data.val();
           this.pushNotifications = this.userProfile.pushNotificationsEnabled;
+          this.dailyEmail = this.userProfile.dailyEmailEnabled;
         });
 
     this.profileData = profileData;
@@ -44,5 +46,9 @@ export class SettingsPage {
     this.profileData.updatePushNotifications(pushNotifications).then(() => {
 
     });
+  }
+
+  toggleDailyEmail(dailyEmail: boolean) {
+    this.profileData.updateDailyEmail(dailyEmail);
   }
 }
