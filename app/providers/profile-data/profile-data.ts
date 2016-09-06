@@ -45,6 +45,14 @@ export class ProfileData {
     });
   }
 
+  togglePushNotifications(pushNotifications: boolean): any {
+    this.currentUser.togglePushNotifications().then(() => {
+      this.userProfile.child(this.currentUser.uid).update({
+        pushNotifications: pushNotifications
+      });
+    })
+  }
+
 
   updatePassword(newPassword: string): any {
     this.currentUser.updatePassword(newPassword).then(() => {
@@ -55,4 +63,3 @@ export class ProfileData {
   }
 
 }
-
