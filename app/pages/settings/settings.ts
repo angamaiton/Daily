@@ -18,8 +18,6 @@ export class SettingsPage {
 
   constructor(private navCtrl: NavController, private auth: AuthService) {
 
-    this.notifications = false;
-
   }
   logIn() {
 
@@ -29,12 +27,10 @@ export class SettingsPage {
   }
 
   toggleNotifications(toggle: Toggle) {
-    debugger;
-    this.notifications = toggle.checked;
+
   }
 
   editContactInfo() {
     this.navCtrl.push(EditContactInfoPage);
-    debugger;
   }
 }

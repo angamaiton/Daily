@@ -28,7 +28,7 @@
     </ion-list-header>
     <ion-item>
       <ion-label>Daily Email</ion-label>
-      <ion-toggle [(ngModel)]="user.notifications"></ion-toggle>
+      <ion-toggle></ion-toggle>
     </ion-item>
   </ion-list>
 
@@ -46,8 +46,8 @@
     <button ion-item>
       <ion-label>Rate on App Store</ion-label>
     </button>
-    <button ion-item>
-      <ion-label (click)="editContactInfo()">Edit Contact Info</ion-label>
+    <button ion-item (click)="editContactInfo()">
+      <ion-label>Edit Contact Info</ion-label>
     </button>
   </ion-list>
 
