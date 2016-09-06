@@ -6,21 +6,13 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar secondary>
     <ion-title>Settings</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-<ion-content padding *ngIf="!auth.authenticated()">
-  <button primary (click)="logIn()" block>Log In</button>
-</ion-content>
-
-<ion-content padding *ngIf="auth.authenticated()">
-  <button primary block (click)="logOut()">Log Out</button>
-</ion-content>
-
-<ion-content padding class="settings" *ngIf="auth.authenticated()">
+<ion-content padding class="settings">
   <ion-list>
     <ion-list-header>
       Personal
@@ -45,7 +37,7 @@
     <button ion-item>
       <ion-label>Rate on App Store</ion-label>
     </button>
-    <button ion-item (click)="editContactInfo()">
+    <button ion-item (click)="goToEditContactInfo()">
       <ion-label>Edit Contact Info</ion-label>
     </button>
   </ion-list>
@@ -59,6 +51,6 @@
     </button>
   </ion-list>
   <p>
-    <button danger block (click)="auth.logout()">Log Out</button>
+    <button danger block>Log Out</button>
   </p>
 </ion-content>

@@ -28,10 +28,11 @@ export class GoalData {
     return this.goalList.child(goalId);
   }
 
-  createGoal(goalName: string, goalDate: string): any {
+  createGoal(goalName: string, goalDate: string, goalDescription: string): any {
     return this.goalList.push({
       name: goalName,
       date: goalDate,
+      description: goalDescription
     }).then( newGoal => {
       this.goalList.child(newGoal.key).child('id').set(newGoal.key);
     });

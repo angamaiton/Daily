@@ -74,7 +74,8 @@ export class AuthService {
         scope : 'openid name email displayName',
         target: 'eLbPUp6fDP467ffvWXoCR4rGMuqNP0Zh'
       };
-      this.auth0.getDelegationToken(options, function (err, result) {
+
+      this.auth0.getDelegationToken(options, function (serr, result) {
         if (!err) {
           firebase.auth().signInWithCustomToken(result.id_token).catch(function (error) {
             console.log(error);
@@ -169,5 +170,15 @@ export class AuthService {
     }).catch(error => {
       console.log(error);
     });
+  }
+
+  function (user, context, callback) {
+    if (context.protocol === 'delegation') {
+      return callback(null, user, context);
+    }
+
+    user.firebase_data = {
+      uid: user.user_id
+    };
   }
 }
