@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { SettingsPage } from '../settings/settings';
-import { LoginPage } from '../../pages/login/login';
 import { ProfileData } from '../../providers/profile-data/profile-data';
+import { Demo } from './profile-calendar.component';
 
 @Component({
   templateUrl: 'build/pages/profile/profile.html',
@@ -19,6 +19,7 @@ export class ProfilePage {
             this.userProfile = data.val();
             this.birthDate = this.userProfile.birthDate;
           });
+
   }
   goToSettings() {
     this.navCtrl.push(SettingsPage)
@@ -103,5 +104,9 @@ export class ProfilePage {
       ]
     });
     alert.present();
+  }
+
+  openCalendar() {
+
   }
 }
