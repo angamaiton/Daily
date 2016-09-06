@@ -2,6 +2,7 @@ import {Storage, LocalStorage} from 'ionic-angular';
 import {AuthHttp, JwtHelper, tokenNotExpired} from 'angular2-jwt';
 import {Injectable, NgZone} from '@angular/core';
 import {Observable} from 'rxjs/Rx';
+import * as firebase from 'firebase';
 
 // Avoid name not found warnings
 declare var Auth0: any;
@@ -64,7 +65,24 @@ export class AuthService {
 
   public login() {
     // Show the Auth0 Lock widget
-    this.lock.show();
+    this.lock.show({}, function (err, profile, id_token) {
+      this.local.setItem('profile', JSON.stringify(profile));
+
+      var options = {
+        id_token : id_token,
+        api : 'firebase',
+        scope : 'openid name email displayName',
+        target: 'eLbPUp6fDP467ffvWXoCR4rGMuqNP0Zh'
+      };
+
+      this.auth0.getDelegationToken(options, function (serr, result) {
+        if (!err) {
+          firebase.auth().signInWithCustomToken(result.id_token).catch(function (error) {
+            console.log(error);
+          });
+        }
+      });
+    });
   }
 
   public logout() {
@@ -72,6 +90,11 @@ export class AuthService {
     this.local.remove('id_token');
     this.local.remove('refresh_token');
     this.zoneImpl.run(() => this.user = null);
+    firebase.auth().signOut().then(function() {
+      console.log("signout successful")
+    }, function(error) {
+      console.log(error);
+    });
     // Unschedule the token refresh
     this.unscheduleRefresh();
   }
@@ -128,7 +151,7 @@ export class AuthService {
   }
 
   public unscheduleRefresh() {
-    // Unsubscribe fromt the refresh
+    // Unsubscribe from the refresh
     if (this.refreshSubscription) {
       this.refreshSubscription.unsubscribe();
     }
@@ -147,5 +170,15 @@ export class AuthService {
     }).catch(error => {
       console.log(error);
     });
+  }
+
+  function (user, context, callback) {
+    if (context.protocol === 'delegation') {
+      return callback(null, user, context);
+    }
+
+    user.firebase_data = {
+      uid: user.user_id
+    };
   }
 }

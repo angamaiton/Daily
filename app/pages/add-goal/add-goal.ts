@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { AuthService } from '../../services/auth/auth';
+import { GoalData } from '../../providers/goal-data/goal-data';
 
 /*
   Generated class for the AddGoalPage page.
@@ -10,11 +10,19 @@ import { AuthService } from '../../services/auth/auth';
 */
 @Component({
   templateUrl: 'build/pages/add-goal/add-goal.html',
+  providers: [GoalData]
 })
 export class AddGoalPage {
 
-  constructor(private navCtrl: NavController, private auth: AuthService) {
+  constructor(private navCtrl: NavController, private goalData: GoalData) {
+    this.navCtrl = navCtrl;
+    this.goalData = goalData;
+  }
 
+  createGoal(goalName: string, goalDate: string, goalDescription: string) {
+    this.goalData.createGoal(goalName, goalDescription, goalDate).then(() => {
+        this.navCtrl.pop();
+    });
   }
 
 }

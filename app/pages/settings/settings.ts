@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {NavController, Toggle} from 'ionic-angular';
-import {AuthService} from '../../services/auth/auth';
 import {EditContactInfoPage} from "../edit-contact-info/edit-contact-info";
+import { AuthData } from '../../providers/auth-data/auth-data';
+import { LoginPage } from '../login/login';
 
 /*
   Generated class for the SettingsPage page.
@@ -11,26 +12,23 @@ import {EditContactInfoPage} from "../edit-contact-info/edit-contact-info";
 */
 @Component({
   templateUrl: 'build/pages/settings/settings.html',
+  providers: [AuthData]
 })
 export class SettingsPage {
 
   notifications: boolean;
 
-  constructor(private navCtrl: NavController, private auth: AuthService) {
-
-  }
-  logIn() {
-
-  }
-  logOut() {
+  constructor(private navCtrl: NavController, private authData: AuthData) {
 
   }
 
-  toggleNotifications(toggle: Toggle) {
-
+  logOut(){
+    this.authData.logoutUser().then(() => {
+      this.navCtrl.setRoot(LoginPage);
+    });
   }
 
-  editContactInfo() {
+  goToEditContactInfo() {
     this.navCtrl.push(EditContactInfoPage);
   }
 }

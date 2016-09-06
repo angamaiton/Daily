@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AddGoalPage } from '../add-goal/add-goal';
-import { AuthService } from '../../services/auth/auth';
+import { GoalData } from '../../providers/goal-data/goal-data';
 
 /*
   Generated class for the GoalsPage page.
@@ -11,17 +11,33 @@ import { AuthService } from '../../services/auth/auth';
 */
 @Component({
   templateUrl: 'build/pages/goals/goals.html',
+  providers: [GoalData]
 })
 export class GoalsPage {
 
-  constructor(private navCtrl: NavController, private auth: AuthService) {
+  private goalList: any;
 
-  }
-  addGoal() {
-      debugger;
-      this.navCtrl.push(AddGoalPage, {
-        user: this.auth.user
+  constructor(private navCtrl: NavController, private goalData: GoalData) {
+    this.navCtrl = navCtrl;
+    this.goalData = goalData;
+
+    this.goalData.getGoalList().on('value', snapshot => {
+      let rawList = [];
+      snapshot.forEach( snap => {
+        rawList.push({
+          id: snap.key,
+          name: snap.val().name,
+          date: snap.val().date,
+          description: snap.val().description
+        });
       });
+      this.goalList = rawList;
+    });
   }
+
+  goToAddGoal() {
+    this.navCtrl.push(AddGoalPage);
+  }
+
 
 }
