@@ -29,7 +29,7 @@
     </ion-list-header>
     <ion-item>
       <ion-label>Push Notifications</ion-label>
-      <ion-toggle [(ngModel)]="notifications" value="foo" checked="false"></ion-toggle>
+      <ion-toggle [(ngModel)]="pushNotifications" value="foo" (click)="togglePushNotifications(pushNotifications)" [checked]="userProfile?.pushNotificationsEnabled"></ion-toggle>
     </ion-item>
     <button ion-item>
       <ion-label>Feedback</ion-label>
