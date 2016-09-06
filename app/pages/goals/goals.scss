@@ -1,0 +1,17 @@
+.goals {
+
+}
+
+.goals .slacker {
+    position:absolute;
+    left: 0;
+    right: 0;
+    margin:0 auto;
+    top:50%;
+    transform:translateY(-50%);
+    text-align: center;
+}
+
+ion-card.cards-list ion-card-header {
+    color: map-get($colors, primary);
+}
