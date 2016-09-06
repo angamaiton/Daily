@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {NavController, Toggle} from 'ionic-angular';
 import {EditContactInfoPage} from "../edit-contact-info/edit-contact-info";
 import { AuthData } from '../../providers/auth-data/auth-data';
+import { ProfileData } from '../../providers/profile-data/profile-data';
 import { LoginPage } from '../login/login';
 
 /*
@@ -16,7 +17,7 @@ import { LoginPage } from '../login/login';
 })
 export class SettingsPage {
 
-  notifications: boolean;
+  private notifications: boolean;
 
   constructor(private navCtrl: NavController, private authData: AuthData) {
 
@@ -30,5 +31,9 @@ export class SettingsPage {
 
   goToEditContactInfo() {
     this.navCtrl.push(EditContactInfoPage);
+  }
+
+  togglePushNotifications(togglePushNotifications: boolean) {
+
   }
 }
