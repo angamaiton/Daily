@@ -45,10 +45,9 @@
       <file leaf-file-name="profile-calendar.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/pages/profile/profile-calendar.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+            <state relative-caret-position="46">
+              <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
               <folding>
-                <element signature="e#0#40#0" expanded="true" />
                 <marker date="1473190997000" expanded="true" signature="470:494" ph="{...}" />
                 <marker date="1473190997000" expanded="true" signature="510:545" ph="{...}" />
                 <marker date="1473190997000" expanded="true" signature="592:2240" ph="..." />
@@ -380,12 +379,12 @@
       <updated>1473165065285</updated>
       <workItem from="1473165067250" duration="9483000" />
       <workItem from="1473175813393" duration="1240000" />
-      <workItem from="1473187413287" duration="3674000" />
+      <workItem from="1473187413287" duration="3986000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14397000" />
+    <option name="totallyTimeSpent" value="14709000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1036" y="104" width="1483" height="1090" extended-state="0" />
@@ -815,10 +814,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/pages/profile/profile-calendar.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        <state relative-caret-position="46">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
             <marker date="1473190997000" expanded="true" signature="470:494" ph="{...}" />
             <marker date="1473190997000" expanded="true" signature="510:545" ph="{...}" />
             <marker date="1473190997000" expanded="true" signature="592:2240" ph="..." />
