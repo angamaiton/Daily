@@ -6,7 +6,7 @@
 -->
 
 <ion-header>
-  <ion-navbar praxis-orange>
+  <ion-navbar primary>
     <ion-title>Goals</ion-title>
     <ion-buttons end>
       <button (click)="goToAddGoal()">
@@ -17,19 +17,22 @@
 </ion-header>
 
 <ion-content padding class="goals">
-  <div class="slacker" *ngIf="goalList && goalList.length == 0">
-    <h1 style="text-align: center;">Oh no!</h1>
-    <p style="text-align: center;" padding>
-      It doesn't look like you've got a goal.
-    </p>
-    <button primary (click)="goToAddGoal()">Add goal</button>
-  </div>
 
-  <ion-card class="cards-list" *ngIf="goalList && goalList.length >= 1">
+  <ion-card class="cards-list" [hidden]="visible">
     <ion-card-header>
-      <h2>Your goal</h2>
+      Your goal
     </ion-card-header>
-    <ion-list>
+    <div class="slacker" *ngIf="goalList && goalList.length == 0">
+      <h1 style="text-align: center;">Oh no!</h1>
+      <p style="text-align: center;" padding>
+        It doesn't look like you've got a goal.
+      </p>
+      <button primary (click)="goToAddGoal()">Add goal</button>
+    </div>
+  </ion-card>
+
+  <ion-card>
+    <ion-list *ngIf="goalList && goalList.length > 1">
       <ion-item *ngFor="let goal of goalList">
         <h2>{{goal?.name}}</h2>
         <p>Description: <strong>${{goal?.description}}</strong></p>
@@ -37,5 +40,6 @@
       </ion-item>
     </ion-list>
   </ion-card>
+
 
 </ion-content>

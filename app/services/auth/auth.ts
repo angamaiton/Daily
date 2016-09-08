@@ -75,7 +75,7 @@ export class AuthService {
         target: 'eLbPUp6fDP467ffvWXoCR4rGMuqNP0Zh'
       };
 
-      this.auth0.getDelegationToken(options, function (err, result) {
+      this.auth0.getDelegationToken(options, function (serr, result) {
         if (!err) {
           firebase.auth().signInWithCustomToken(result.id_token).catch(function (error) {
             console.log(error);

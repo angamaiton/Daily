@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { SettingsPage } from '../settings/settings';
 import { ProfileData } from '../../providers/profile-data/profile-data';
+import { Demo } from './profile-calendar.component';
 
 @Component({
   templateUrl: 'build/pages/profile/profile.html',
@@ -21,7 +22,7 @@ export class ProfilePage {
 
   }
   goToSettings() {
-    this.navCtrl.push(SettingsPage);
+    this.navCtrl.push(SettingsPage)
   }
 
   updateDOB(birthDate){

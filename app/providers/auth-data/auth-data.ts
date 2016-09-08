@@ -58,14 +58,4 @@ export class AuthData {
     return this.fireAuth.signOut();
   }
 
-  googleAuth(): any {
-    var provider = new firebase.auth.GoogleAuthProvider();
-
-    return this.fireAuth.signInWithPopup(provider).then(function(result) {
-      var user = result.user;
-    }).catch(function(error) {
-      console.log(error);
-    });
-  }
-
 }
