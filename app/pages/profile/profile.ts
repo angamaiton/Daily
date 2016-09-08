@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { SettingsPage } from '../settings/settings';
 import { ProfileData } from '../../providers/profile-data/profile-data';
+import { EditContactInfoPage } from '../../pages/edit-contact-info/edit-contact-info';
 
 @Component({
   templateUrl: 'build/pages/profile/profile.html',
@@ -22,10 +23,6 @@ export class ProfilePage {
   }
   goToSettings() {
     this.navCtrl.push(SettingsPage)
-  }
-
-  updateDOB(birthDate){
-    this.profileData.updateDOB(birthDate);
   }
 
   updateName(){
@@ -104,5 +101,9 @@ export class ProfilePage {
     });
     alert.present();
   }
-  
+
+  addProfileInformation() {
+    this.navCtrl.push(EditContactInfoPage);
+  }
+
 }

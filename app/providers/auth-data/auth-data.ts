@@ -30,11 +30,13 @@ export class AuthData {
    * @param  {string} email    [User's email address]
    * @param  {string} password [User's password]
    */
-  signupUser(email: string, password: string): any {
+  signupUser(email: string, password: string, firstName?: string, lastName?: string): any {
     return this.fireAuth.createUserWithEmailAndPassword(email, password).then((newUser) => {
       this.fireAuth.signInWithEmailAndPassword(email, password).then((authenticatedUser) => {
         this.userProfile.child(authenticatedUser.uid).set({
-          email: email
+          email: email,
+          firstName: firstName,
+          lastName: lastName
         });
       });
     });
