@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators, ControlGroup } from '@angular/common';
 import { AuthData } from '../../providers/auth-data/auth-data';
 import { EmailValidator } from '../../validators/email';
-import { GoalsPage } from "../goals/goals";
+import { TabsPage } from "../tabs/tabs";
+import { IntroSlidesPage } from '../intro-slides/intro-slides';
 
 @Component({
   templateUrl: 'build/pages/signup/signup.html',
@@ -13,6 +14,7 @@ export class SignupPage {
   public signupForm: ControlGroup;
   emailChanged: boolean = false;
   passwordChanged: boolean = false;
+  slidesDisplayed: boolean = false;
   submitAttempt: boolean = false;
   loading: any;
 
@@ -47,7 +49,7 @@ export class SignupPage {
       console.log(this.signupForm.value);
     } else {
       this.authData.signupUser(this.signupForm.value.email, this.signupForm.value.password).then(() => {
-        this.navCtrl.setRoot(GoalsPage);
+        this.navCtrl.setRoot(TabsPage);
       }, (error) => {
         this.loading.dismiss();
         let alert = this.alertCtrl.create({
@@ -68,4 +70,6 @@ export class SignupPage {
       this.loading.present();
     }
   }
+
+
 }

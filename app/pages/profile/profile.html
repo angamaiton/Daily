@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar primary>
+  <ion-navbar praxis-crimson>
     <ion-title>Profile</ion-title>
     <ion-buttons end>
       <button (click)="goToSettings()"><ion-icon name="settings"></ion-icon></button>
@@ -22,7 +22,7 @@
 
 <ion-content padding text-center class="profile">
   <ion-card>
-    <img src="/img/contact-outline.png" style="height: 256px; width: 256px; display: block; margin-left: auto; margin-right: auto;">
+    <img src="{{userProfile?.profilePhoto}}" style="height: 256px; width: 256px; display: block; margin-left: auto; margin-right: auto;">
     <ion-list>
       <ion-item>
         <ion-label text-center>

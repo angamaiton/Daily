@@ -70,4 +70,20 @@ export class ProfileData {
     });
   }
 
+  updateProfilePhoto(newProfilePhoto: string): any {
+    this.currentUser.updateProfilePhoto(newProfilePhoto).then(() => {
+      console.log("Photo changed!");
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  deleteAccount(): any {
+    this.currentUser.delete().then(() => {
+      console.log("Account deleted.");
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
 }

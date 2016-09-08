@@ -40,11 +40,6 @@ export class MyApp {
       // this.auth.startupTokenRefresh();
     });
   }
-
-  // public logIn() {
-  //   this.rootPage = LoginPage;
-  //   this.auth.login();
-  // }
 }
 
 ionicBootstrap(MyApp);

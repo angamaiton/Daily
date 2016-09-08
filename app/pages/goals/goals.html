@@ -6,20 +6,15 @@
 -->
 
 <ion-header>
-  <ion-navbar primary>
+  <ion-navbar praxis-crimson>
     <ion-title>Goals</ion-title>
-    <ion-buttons end>
-      <button (click)="goToAddGoal()">
-        <ion-icon name="add" padding></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="goals">
 
-  <ion-card class="cards-list" [hidden]="visible">
-    <ion-card-header>
+  <ion-card class="cards-list">
+    <ion-card-header *ngIf="goalList && goalList.length > 0">
       Your goal
     </ion-card-header>
     <div class="slacker" *ngIf="goalList && goalList.length == 0">
@@ -28,9 +23,12 @@
         It doesn't look like you've got a goal.
       </p>
       <button primary (click)="goToAddGoal()">Add goal</button>
+      <button primary (click)="presentLoginModal()">Show Modal</button>
     </div>
   </ion-card>
 
+
+  <!--show only one goal for now -->
   <ion-card>
     <ion-list *ngIf="goalList && goalList.length > 1">
       <ion-item *ngFor="let goal of goalList">
