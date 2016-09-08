@@ -5,6 +5,10 @@ import {TabsPage} from './pages/tabs/tabs';
 import {LoginPage} from "./pages/login/login";
 import {GoalsPage} from "./pages/goals/goals";
 import * as firebase from 'firebase';
+import {Http} from '@angular/http';
+import {AuthHttp, AuthConfig} from 'angular2-jwt';
+import {AuthService} from './services/auth/auth';
+
 
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>'
@@ -13,7 +17,7 @@ export class MyApp {
 
   rootPage: any;
 
-  constructor(private platform: Platform) {
+  constructor(private platform: Platform, private auth: AuthService) {
 
     const
       dailyApp = {
@@ -40,11 +44,14 @@ export class MyApp {
       // this.auth.startupTokenRefresh();
     });
   }
-
-  // public logIn() {
-  //   this.rootPage = LoginPage;
-  //   this.auth.login();
-  // }
 }
 
-ionicBootstrap(MyApp);
+ionicBootstrap(MyApp, [
+  provide(AuthHttp, {
+    useFactory: (http) => {
+      return new AuthHttp(new AuthConfig({noJwtError: true}), http);
+    },
+    deps: [Http]
+  }),
+  AuthService
+]);

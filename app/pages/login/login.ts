@@ -1,7 +1,8 @@
-import { NavController, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, LoadingController, AlertController, Platform } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, ControlGroup } from '@angular/common';
 import { AuthData } from '../../providers/auth-data/auth-data';
+import { AuthService } from '../../services/auth/auth';
 import { SignupPage } from '../signup/signup';
 import { GoalsPage } from '../goals/goals';
 import { TabsPage } from '../tabs/tabs';
@@ -20,7 +21,7 @@ export class LoginPage {
   loading: any;
 
   constructor(public navCtrl: NavController, public authData: AuthData, public formBuilder: FormBuilder,
-              public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+              public alertCtrl: AlertController, public loadingCtrl: LoadingController, public auth: AuthService) {
 
     /**
      * Creates a ControlGroup that declares the fields available, their values and the validators that they are going
@@ -75,6 +76,10 @@ export class LoginPage {
       });
       this.loading.present();
     }
+  }
+
+  login() {
+    this.auth.login();
   }
 
   goToSignup(){
