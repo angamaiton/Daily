@@ -12,7 +12,6 @@ export class AuthData {
     // This declares a database reference for the userProfile/ node.
     this.userProfile = firebase.database().ref('/userProfile');
   }
-
   /**
    * [loginUser We'll take an email and password and log the user into the firebase app]
    * @param  {string} email    [User's email address]
@@ -58,6 +57,13 @@ export class AuthData {
    */
   logoutUser(): any {
     return this.fireAuth.signOut();
+  }
+
+  loginWithGoogle() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    this.fireAuth.signInWithPopup(provider).then((result) => {
+      debugger;
+    })
   }
 
 }

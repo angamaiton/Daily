@@ -36,15 +36,15 @@
       <p>Your password needs more than 6 characters.</p>
     </ion-item>
 
-  </form>
+    <ion-row>
+      <ion-col>
+        <button block type="submit">
+          Log In
+        </button>
+      </ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col>
-      <button block type="submit">
-        Log In
-      </button>
-    </ion-col>
-  </ion-row>
+  </form>
 
   <ion-row>
     <ion-col>
@@ -58,5 +58,9 @@
       </button>
     </ion-col>
   </ion-row>
+
+  <button block danger (click)="loginWithGoogle()">
+    Continue with Google
+  </button>
 
 </ion-content>
