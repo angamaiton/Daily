@@ -3,6 +3,7 @@ import { NavController, AlertController } from 'ionic-angular';
 import { SettingsPage } from '../settings/settings';
 import { ProfileData } from '../../providers/profile-data/profile-data';
 import { EditContactInfoPage } from '../../pages/edit-contact-info/edit-contact-info';
+import { CalendarComponent } from '../../pages/calendar/calendar';
 
 @Component({
   templateUrl: 'build/pages/profile/profile.html',
@@ -27,7 +28,7 @@ export class ProfilePage {
 
   updateName(){
     let alert = this.alertCtrl.create({
-      message: "Your first name & last name",
+      message: "Please enter your first and last name.",
       inputs: [
         {
           name: 'firstName',
