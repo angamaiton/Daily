@@ -31,11 +31,11 @@ export class IntroSlidesPage {
       description: "Instead of setting yourself a list of goals, set yourself <b>one</b> goal.",
     },
     {
-      title: "What is Ionic?",
+      title: "What is Daily?",
       description: "<b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.",
     },
     {
-      title: "What is Ionic Cloud?",
+      title: "What's your goal?",
       description: "The <b>Ionic Cloud</b> is a cloud platform for managing and scaling Ionic apps with integrated services like push notifications, native builds, user auth, and live updating.",
     }
   ];

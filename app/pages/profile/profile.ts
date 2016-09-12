@@ -7,7 +7,8 @@ import { CalendarComponent } from '../../pages/calendar/calendar';
 
 @Component({
   templateUrl: 'build/pages/profile/profile.html',
-  providers: [ProfileData]
+  providers: [ProfileData],
+  directives: [CalendarComponent]
 })
 export class ProfilePage {
 
@@ -18,7 +19,12 @@ export class ProfilePage {
 
       this.profileData.getUserProfile().on('value', (data) => {
             this.userProfile = data.val();
-            this.profilePhoto = this.userProfile.photoURL;
+            if(!this.userProfile.photoURL) {
+              this.userProfile.photoURL = 'http://www.freeiconspng.com/uploads/person-outline-icon-png-person-outline-icon-png-person-17.png'
+              this.profilePhoto = this.userProfile.photoURL;
+            } else {
+              this.profilePhoto = this.userProfile.photoURL;
+            }
           });
 
   }

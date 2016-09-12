@@ -77,9 +77,9 @@ export class LoginPage {
     }
   }
 
-  loginWithGoogle() {
-    this.authData.loginWithGoogle();
-  }
+  // loginWithGoogle() {
+  //   this.authData.loginWithGoogle();
+  // }
 
   goToSignup(){
     this.navCtrl.push(SignupPage);

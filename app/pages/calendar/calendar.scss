@@ -1,6 +1,6 @@
 
 
-$calBaseColor: map-get($colors,favorite);
+$calBaseColor: map-get($colors,praxis-crimson);
 $calDarkColor: map-get($colors,favoritedark);
 $calMediumColor: map-get($colors,favoritemedium);
 $calTextColor:map-get($colors,favoritedark);
@@ -16,7 +16,7 @@ $dateWeekendBgColor:$calBaseColor;
 $dateNonCurrentMonthBgColor:$calMediumColor ;
 
 .calendar {
-  margin-top:56px;
+  margin-top:10px;
   padding:5px;
 
   ion-grid {

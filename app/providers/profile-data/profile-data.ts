@@ -14,12 +14,14 @@ export class ProfileData {
   public pushNotificationsEnabled: any;
   public dailyEmailEnabled: any;
   public currentUser: any;
+  public profilePhoto: any;
 
   constructor() {
     this.currentUser = firebase.auth().currentUser;
     this.pushNotificationsEnabled = firebase.database().ref('userProfile/' + this.currentUser.uid + '/pushNotificationsEnabled');
     this.dailyEmailEnabled = firebase.database().ref('userProfile/' + this.currentUser.uid + '/dailyEmailEnabled');
-    this.userProfile = firebase.database().ref('/userProfile');
+    this.userProfile = firebase.database().ref('userProfile/');
+    this.profilePhoto = firebase.database().ref('userProfile/' + this.currentUser.uid + '/photoURL');
   }
 
   getUserProfile(): any {
