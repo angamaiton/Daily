@@ -3,7 +3,7 @@
     <ion-slide *ngFor="let monthObj of months">
       <ion-row class="month-row">
         <ion-col width-60 class="text-center">
-          {{monthObj.selectedMonth.format("MMM YYYY")}}
+          {{monthObj.selectedMonth.format("MMMM YYYY")}}
         </ion-col>
       </ion-row>
 
@@ -35,27 +35,27 @@
               </ion-col>
             </template>
 
-          <template [ngIf]="((monthObj.selectedDate.month() === monthObj.selectedMonth.month())
+          <!--<template [ngIf]="((monthObj.selectedDate.month() === monthObj.selectedMonth.month())
               && (!week.days)
               && (monthObj.selectedRowIndex === (rowIndex - 1))
               )">
               <ion-col class="text-center">
                 <button small primary class="action-button">Check In</button>
               </ion-col>
-            </template>
+            </template>-->
         </ion-row>
       </div>
     </ion-slide>
   </ion-slides>
-
-<div class="events">
-  <h1>{{selectedDate.format('MMMM Do')}} – Progress</h1>
-  <div class="event-box text-center">
-    <ion-list>
-      <ion-item *ngFor="let event of events">
-        {{event.name}}
-      </ion-item>
-    </ion-list>
-  </div>
-</div>
+    <div class="goals">
+      <h1>{{selectedDate.format('MMMM Do')}} – Progress</h1>
+        <ion-list *ngIf="goalList && goalList.length > 0">
+          <ion-item *ngFor="let goal of goalList">
+            <h1>{{goal?.name}}</h1>
+            <p>Description: <strong>{{goal?.description}}</strong></p>
+            <p>Date Started: <strong>{{goal?.date}}</strong></p>
+            <!--<button danger (click)="removeGoal(goal?.id)" item-right><ion-icon name="trash"></ion-icon> Delete</button>-->
+          </ion-item>
+        </ion-list>
+    </div>
 </div>

@@ -1,10 +1,3 @@
-<!--
-  Generated template for the GoalsPage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-
 <ion-header>
   <ion-navbar praxis-crimson>
     <ion-title>Goals</ion-title>
@@ -13,31 +6,55 @@
 
 <ion-content padding class="goals">
 
-  <ion-card class="cards-list">
-    <ion-card-header *ngIf="goalList && goalList.length > 0">
-      Your goal
+  <ion-card class="cards-list" *ngIf="goalList && goalList.length > 0">
+    <ion-card-header text-center>
+        <h1>Primary goal</h1>
     </ion-card-header>
-    <div class="slacker" *ngIf="goalList && goalList.length == 0">
-      <h1 style="text-align: center;">Oh no!</h1>
-      <p style="text-align: center;" padding>
-        It doesn't look like you've set a goal.
-      </p>
-      <button primary (click)="goToAddGoal()">Add Goal</button>
-      <button primary (click)="presentLoginModal()">Show Modal</button>
-    </div>
+    <ion-card-content>
+      <ion-list no-lines *ngIf="goalList && goalList.length > 0">
+        <ion-item *ngFor="let goal of goalList">
+          <h1>{{goal?.name}}</h1>
+          <p>Description: <strong>{{goal?.description}}</strong></p>
+          <p>Date Started: <strong>{{goal?.date}}</strong></p>
+          <button danger (click)="removeGoal(goal?.id)" item-right><ion-icon name="trash"></ion-icon> Delete</button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+    <ion-card-header text-center>
+        <h1>Subtasks</h1>
+    </ion-card-header>
+        <ion-card-content>
+      <ion-list no-lines *ngIf="goalList && goalList.length > 0">
+        <ion-item *ngFor="let goal of goalList">
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
   </ion-card>
 
+  <!--<ion-card class="cards-list" *ngIf="goalList && goalList.length > 0">
+    <ion-card-header text-center>
+        <h1>Subtasks</h1>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list no-lines *ngIf="goalList && goalList.length > 0">
+        <ion-item *ngFor="let goal of goalList">
+          <p>Description: <strong>{{goal?.description}}</strong></p>
+          <p>Date Started: <strong>{{goal?.date}}</strong></p>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>-->
+
+  <div class="no-goals" *ngIf="goalList && goalList.length == 0">
+    <h1 style="text-align: center;">Oh no!</h1>
+    <p style="text-align: center;" padding>
+      It doesn't look like you've set a goal.
+    </p>
+    <button primary (click)="goToAddGoal()">Add Goal</button>
+    <button primary (click)="presentLoginModal()">Show Modal</button>
+  </div>
 
   <!--show only one goal for now -->
   <ion-card>
-    <ion-list *ngIf="goalList && goalList.length > 1">
-      <ion-item *ngFor="let goal of goalList">
-        <h2>{{goal?.name}}</h2>
-        <p>Description: <strong>${{goal?.description}}</strong></p>
-        <p>Date: <strong>{{goal?.date}}</strong></p>
-      </ion-item>
-    </ion-list>
   </ion-card>
-
-
 </ion-content>

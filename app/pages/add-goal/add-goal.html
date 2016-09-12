@@ -1,17 +1,8 @@
-<!--
-  Generated template for the AddGoalPage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar primary>
     <ion-title>Add Goal</ion-title>
   </ion-navbar>
-
 </ion-header>
-
 
 <ion-content padding>
   <ion-card class="cards-list">
@@ -27,7 +18,6 @@
   </ion-card>
 
   <ion-card>
-
     <ion-card-header>
       Describe your goal
     </ion-card-header>
@@ -37,10 +27,9 @@
         <ion-input [(ngModel)]="goalDescription" type="text" placeholder="Why do you want to accomplish this?"></ion-input>
       </ion-item>
     </ion-list>
-
   </ion-card>
 
-   <ion-card class="cards-list">
+  <ion-card class="cards-list">
     <ion-card-header>
       Set a date
     </ion-card-header>
@@ -59,35 +48,35 @@
       Give it a category
     </ion-card-header>
 
-<!--     <ion-list>
-  <button ion-item>
-    <ion-icon name="briefcase" item-left></ion-icon>
-    Career
-  </button>
+    <ion-list>
+      <button ion-item>
+        <ion-icon name="briefcase" item-left></ion-icon>
+        Career
+      </button>
 
-  <button ion-item>
-    <ion-icon name="american-football" item-left></ion-icon>
-    Fitness
-  </button>
+      <button ion-item>
+        <ion-icon name="american-football" item-left></ion-icon>
+        Fitness
+      </button>
 
-  <button ion-item>
-    <ion-icon name="person" item-left></ion-icon>
-    Social
-  </button>
+      <button ion-item>
+        <ion-icon name="person" item-left></ion-icon>
+        Social
+      </button>
 
-  <button ion-item>
-    <ion-icon name="heart" item-left></ion-icon>
-    Relationships
-  </button>
+      <button ion-item>
+        <ion-icon name="heart" item-left></ion-icon>
+        Relationships
+      </button>
 
-  <button ion-item>
-    <ion-icon name="images" item-left></ion-icon>
-    Fun
-  </button>
-
-</ion-list> -->
+      <button ion-item>
+        <ion-icon name="images" item-left></ion-icon>
+        Fun
+      </button>
+    </ion-list>
   </ion-card>
-  <p>
-    <button secondary block (click)="createGoal(goalName, goalDescription, goalDate)">Save</button>
-  </p>
+
+  <div>
+    <p><button secondary block (click)="createGoal(goalName, goalDescription, goalDate)">Save</button></p>
+  </div>
 </ion-content>

@@ -37,6 +37,10 @@ export class GoalsPage {
     });
   }
 
+  removeGoal(goalId) {
+    this.goalData.deleteGoal(goalId);
+  }
+
   presentLoginModal() {
     let loginModal = this.modalCtrl.create(IntroSlidesPage);
     loginModal.present();
