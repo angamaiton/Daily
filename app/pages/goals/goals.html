@@ -8,15 +8,16 @@
 
   <ion-card class="cards-list" *ngIf="goalList && goalList.length > 0">
     <ion-card-header text-center>
-        <h1>Primary goal</h1>
+        <h1>Primary Goal</h1>
     </ion-card-header>
     <ion-card-content>
-      <ion-list no-lines *ngIf="goalList && goalList.length > 0">
+      <ion-list *ngIf="goalList && goalList.length > 0">
         <ion-item *ngFor="let goal of goalList">
           <h1>{{goal?.name}}</h1>
           <p>Description: <strong>{{goal?.description}}</strong></p>
           <p>Date Started: <strong>{{goal?.date}}</strong></p>
           <button danger (click)="removeGoal(goal?.id)" item-right><ion-icon name="trash"></ion-icon> Delete</button>
+          <button primary (click)="removeGoal(goal?.id)" item-right><ion-icon name="checkmark"></ion-icon>Done</button>
         </ion-item>
       </ion-list>
     </ion-card-content>
@@ -24,10 +25,22 @@
         <h1>Subtasks</h1>
     </ion-card-header>
         <ion-card-content>
-      <ion-list no-lines *ngIf="goalList && goalList.length > 0">
-        <ion-item *ngFor="let goal of goalList">
-        </ion-item>
-      </ion-list>
+        <ion-list *ngIf="goalList && goalList.length > 0">
+          <ion-item *ngFor="let goal of goalList">
+            <h2>Testing Subtask</h2>
+            <p>Description: <strong>Something to be done</strong></p>
+            <p>Date Started: <strong>Today</strong></p>
+            <button danger (click)="removeGoal(goal?.id)" item-right><ion-icon name="trash"></ion-icon> Delete</button>
+            <button primary (click)="removeGoal(goal?.id)" item-right><ion-icon name="checkmark"></ion-icon>Done</button>
+          </ion-item>
+          <ion-item *ngFor="let goal of goalList">
+            <h2>Testing Subtask</h2>
+            <p>Description: <strong>Something to be done</strong></p>
+            <p>Date Started: <strong>Tomorrow</strong></p>
+            <button danger (click)="removeGoal(goal?.id)" item-right><ion-icon name="trash"></ion-icon> Delete</button>
+            <button primary (click)="removeGoal(goal?.id)" item-right><ion-icon name="checkmark"></ion-icon>Done</button>
+          </ion-item>
+        </ion-list>
     </ion-card-content>
   </ion-card>
 

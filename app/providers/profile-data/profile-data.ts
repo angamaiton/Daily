@@ -17,7 +17,7 @@ export class ProfileData {
   public profilePhoto: any;
 
   constructor() {
-    this.currentUser = firebase.auth().currentUser;
+    this.currentUser = firebase.auth().currentUser.uid;
     this.pushNotificationsEnabled = firebase.database().ref('userProfile/' + this.currentUser.uid + '/pushNotificationsEnabled');
     this.dailyEmailEnabled = firebase.database().ref('userProfile/' + this.currentUser.uid + '/dailyEmailEnabled');
     this.userProfile = firebase.database().ref('userProfile/');
@@ -25,25 +25,25 @@ export class ProfileData {
   }
 
   getUserProfile(): any {
-    return this.userProfile.child(this.currentUser.uid);
+    return this.userProfile.child(this.currentUser);
   }
 
   updateName(firstName: string, lastName: string): any {
-    return this.userProfile.child(this.currentUser.uid).update({
+    return this.userProfile.child(this.currentUser).update({
       firstName: firstName,
       lastName: lastName,
     });
   }
 
   updateDOB(birthDate: string): any {
-    return this.userProfile.child(this.currentUser.uid).update({
+    return this.userProfile.child(this.currentUser).update({
       birthDate: birthDate,
     });
   }
 
   updateEmail(newEmail: string): any {
     this.currentUser.updateEmail(newEmail).then(() => {
-      this.userProfile.child(this.currentUser.uid).update({
+      this.userProfile.child(this.currentUser).update({
         email: newEmail
       });
     }, (error) => {
@@ -66,7 +66,7 @@ export class ProfileData {
 
   updatePassword(newPassword: string): any {
     this.currentUser.updatePassword(newPassword).then(() => {
-      console.log("Password changed!");
+      console.log('Password changed!');
     }, (error) => {
       console.log(error);
     });
@@ -74,7 +74,7 @@ export class ProfileData {
 
   updateProfilePhoto(newProfilePhoto: string): any {
     this.currentUser.updateProfilePhoto(newProfilePhoto).then(() => {
-      console.log("Photo changed!");
+      console.log('Photo changed!');
     }, (error) => {
       console.log(error);
     });
@@ -82,7 +82,7 @@ export class ProfileData {
 
   deleteAccount(): any {
     this.currentUser.delete().then(() => {
-      console.log("Account deleted.");
+      console.log('Account deleted.');
     }, (error) => {
       console.log(error);
     });

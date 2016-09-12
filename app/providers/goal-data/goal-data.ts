@@ -13,6 +13,7 @@ export class GoalData {
   public currentUser: any;
   public goalList: any;
   public profilePictureRef: any;
+  public subtaskList: any;
 
   constructor() {
     this.currentUser = firebase.auth().currentUser.uid;
@@ -36,6 +37,11 @@ export class GoalData {
     }).then( newGoal => {
       this.goalList.child(newGoal.key).child('id').set(newGoal.key);
     });
+  }
+
+  getSubtaskList(goalId): any {
+    this.subtaskList = firebase.database().ref('/userProfile/' + this.currentUser + '/goalList/' + goalId + '/subtaskList');
+    return this.goalList.child(goalId).subtaskList;
   }
 
   deleteGoal(goalId): any {
