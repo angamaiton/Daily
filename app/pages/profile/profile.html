@@ -20,57 +20,13 @@
         <ion-col>
           <h1>0</h1>
           <p>
-            Days in a Row
+            Goals
           </p>
         </ion-col>
         <ion-col>
           <h1>0</h1>
           <p>
-            Tasks Completed
-          </p>
-        </ion-col>
-        <ion-col>
-          <h1>0</h1>
-          <p>
-            Check-Ins
-          </p>
-        </ion-col>
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>
-        <h1>Progress Calendar</h1>
-      </ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <calendar></calendar>
-    </ion-card-content>
-  </ion-card>
-</ion-content>
-
-<!-- <ion-content padding text-center class="profile" *ngIf="userProfile && (userProfile.firstName && userProfile.lastName)">
-  <ion-card>
-    <ion-card-header>
-      <img src="{{userProfile?.photoURL}}" style="height: 256px; width: 256px; display: block; margin-left: auto; margin-right: auto;">
-      <ion-card-title text-center>
-        <h1>{{userProfile?.firstName}} {{userProfile?.lastName}}</h1>
-      </ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-row>
-        <ion-col>
-          <h1>0</h1>
-          <p>
-            Days in a Row
-          </p>
-        </ion-col>
-        <ion-col>
-          <h1 text-center>0</h1>
-          <p>
-            Tasks Completed
+            Completed
           </p>
         </ion-col>
         <ion-col>
@@ -85,13 +41,19 @@
 
   <ion-card>
     <ion-card-header>
-      Goal Progress
+      <h1>Progress Data</h1>
     </ion-card-header>
-
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <calendar></calendar>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
   </ion-card>
 </ion-content>
 
-<ion-content padding text-center class="no-profile" *ngIf="userProfile && !(userProfile.firstName && userProfile.lastName)">
+<!--<ion-content padding text-center class="no-profile" *ngIf="userProfile && !(userProfile.firstName && userProfile.lastName)">
   <div class="no-profile">
     <h1 style="text-align: center;">You don't have a profile!</h1>
     <p style="text-align: center;" padding>

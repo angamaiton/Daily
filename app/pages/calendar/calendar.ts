@@ -10,7 +10,7 @@ const NUM_OF_DAYS = 7;
 @Component({
   selector: 'calendar',
   templateUrl: 'build/pages/calendar/calendar.html',
-  providers:[CalendarService]
+  providers: [CalendarService]
 })
 export class CalendarComponent {
   @ViewChild('mySlider') slider: Slides;
