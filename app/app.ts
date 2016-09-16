@@ -1,9 +1,8 @@
-import {Component, provide, Injectable} from '@angular/core';
-import {Platform, ionicBootstrap} from 'ionic-angular';
-import {StatusBar} from 'ionic-native';
-import {TabsPage} from './pages/tabs/tabs';
-import {LoginPage} from "./pages/login/login";
-import {GoalsPage} from "./pages/goals/goals";
+import { Component } from '@angular/core';
+import { Platform, ionicBootstrap } from 'ionic-angular';
+import { StatusBar } from 'ionic-native';
+import { TabsPage } from './pages/tabs/tabs';
+import { LoginPage } from './pages/login/login';
 import * as firebase from 'firebase';
 
 @Component({
@@ -17,10 +16,10 @@ export class MyApp {
 
     const
       dailyApp = {
-        apiKey: "AIzaSyC-xk4DT4hVSUQWCJstMRTlZ1iwNtIBokY",
-        authDomain: "daily-by-praxis-142323.firebaseapp.com",
-        databaseURL: "https://daily-by-praxis-142323.firebaseio.com",
-        storageBucket: "daily-by-praxis-142323.appspot.com"
+        apiKey: 'AIzaSyC-xk4DT4hVSUQWCJstMRTlZ1iwNtIBokY',
+        authDomain: 'daily-by-praxis-142323.firebaseapp.com',
+        databaseURL: 'https://daily-by-praxis-142323.firebaseio.com',
+        storageBucket: 'daily-by-praxis-142323.appspot.com'
       };
 
     firebase.initializeApp(dailyApp);
@@ -40,11 +39,6 @@ export class MyApp {
       // this.auth.startupTokenRefresh();
     });
   }
-
-  // public logIn() {
-  //   this.rootPage = LoginPage;
-  //   this.auth.login();
-  // }
 }
 
 ionicBootstrap(MyApp);

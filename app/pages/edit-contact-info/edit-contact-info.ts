@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { ProfileData } from '../../providers/profile-data/profile-data';
 import { AuthData } from '../../providers/auth-data/auth-data';
+import { LoginPage } from '../../pages/login/login';
 
 /*
   Generated class for the EditContactInfoPage page.
@@ -27,9 +28,6 @@ export class EditContactInfoPage {
           });
   }
 
-  updateDOB(birthDate){
-    this.profileData.updateDOB(birthDate);
-  }
 
   updateName(){
     let alert = this.alertCtrl.create({
@@ -101,6 +99,47 @@ export class EditContactInfoPage {
           text: 'Save',
           handler: data => {
             this.profileData.updatePassword(data.newPassword);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  updateProfilePhoto() {
+    let alert = this.alertCtrl.create({
+      inputs: [
+        {
+          name: 'newProfilePhoto',
+          placeholder: 'Your new profile photo (test)'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            this.profileData.updateProfilePhoto(data.newProfilePhoto);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  deleteAccount() {
+    let alert = this.alertCtrl.create({
+      message: "Are you sure you want to delete your account? You can't undo this.",
+      buttons: [
+        {
+          text: 'Cancel',
+        },
+        {
+          text: 'Delete Forever',
+          handler: () => {
+            this.profileData.currentUser.delete().then(() => {this.navCtrl.setRoot(LoginPage)});
           }
         }
       ]

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
+import {auth} from "firebase";
 
 @Injectable()
 export class AuthData {
@@ -12,7 +13,6 @@ export class AuthData {
     // This declares a database reference for the userProfile/ node.
     this.userProfile = firebase.database().ref('/userProfile');
   }
-
   /**
    * [loginUser We'll take an email and password and log the user into the firebase app]
    * @param  {string} email    [User's email address]
@@ -30,11 +30,13 @@ export class AuthData {
    * @param  {string} email    [User's email address]
    * @param  {string} password [User's password]
    */
-  signupUser(email: string, password: string): any {
+  signupUser(email: string, password: string, firstName?: string, lastName?: string): any {
     return this.fireAuth.createUserWithEmailAndPassword(email, password).then((newUser) => {
       this.fireAuth.signInWithEmailAndPassword(email, password).then((authenticatedUser) => {
         this.userProfile.child(authenticatedUser.uid).set({
-          email: email
+          email: email,
+          firstName: firstName,
+          lastName: lastName
         });
       });
     });
@@ -56,6 +58,30 @@ export class AuthData {
    */
   logoutUser(): any {
     return this.fireAuth.signOut();
+  }
+
+  loginWithGoogle() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    this.fireAuth.signInWithRedirect(provider);
+    return this.fireAuth.getRedirectResult().then((result) => {
+      if (result.credential) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = result.credential.accessToken;
+        // ...
+      }
+      // The signed-in user info.
+      var user = result.user;
+    }).catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      // ...
+    });
+
   }
 
 }

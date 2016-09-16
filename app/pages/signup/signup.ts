@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators, ControlGroup } from '@angular/common';
 import { AuthData } from '../../providers/auth-data/auth-data';
 import { EmailValidator } from '../../validators/email';
-import { GoalsPage } from "../goals/goals";
+import { TabsPage } from "../tabs/tabs";
+import { IntroSlidesPage } from '../intro-slides/intro-slides';
 
 @Component({
   templateUrl: 'build/pages/signup/signup.html',
@@ -13,6 +14,7 @@ export class SignupPage {
   public signupForm: ControlGroup;
   emailChanged: boolean = false;
   passwordChanged: boolean = false;
+  slidesDisplayed: boolean = false;
   submitAttempt: boolean = false;
   loading: any;
 
@@ -22,7 +24,9 @@ export class SignupPage {
 
     this.signupForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
-      password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
+      password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
+      firstName: [''],
+      lastName: ['']
     })
   }
 
@@ -46,8 +50,9 @@ export class SignupPage {
     if (!this.signupForm.valid){
       console.log(this.signupForm.value);
     } else {
-      this.authData.signupUser(this.signupForm.value.email, this.signupForm.value.password).then(() => {
-        this.navCtrl.setRoot(GoalsPage);
+      this.authData.signupUser(this.signupForm.value.email, this.signupForm.value.password,
+        this.signupForm.value.firstName, this.signupForm.value.lastName).then(() => {
+        this.navCtrl.setRoot(TabsPage);
       }, (error) => {
         this.loading.dismiss();
         let alert = this.alertCtrl.create({
@@ -68,4 +73,6 @@ export class SignupPage {
       this.loading.present();
     }
   }
+
+
 }

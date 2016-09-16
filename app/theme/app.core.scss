@@ -25,3 +25,72 @@
 @import "../pages/edit-contact-info/edit-contact-info.scss";
 
 @import "../pages/reset-password/reset-password.scss";
+
+@import "../pages/intro-slides/intro-slides.scss";
+
+
+@import '../pages/calendar/calendar.scss';
+
+/* General
+==================================*/
+//
+
+.nopadding {
+  padding:0;
+}
+
+.nomargin {
+  margin:0;
+}
+.footer {
+  bottom: 0;
+  background-position: top;
+
+}
+
+
+.cal-bg {
+  background-color:map-get($colors,favorite);
+}
+/* Utilities
+==================================*/
+
+p {
+  color: #555;
+  margin: 0 0 25px;
+}
+
+
+.scroll {
+  height: 100%;
+}
+
+.auto-scroll scroll-content {
+  overflow-y:auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.launch-content {
+  padding-top:15%;
+}
+
+
+// Classes
+.pull-left {
+  float: left !important;
+}
+.pull-right {
+  float: right !important;
+}
+
+.padding-right {
+  padding-right:10px !important;
+}
+
+.padding-left {
+  padding-left:10px !important;
+}
+
